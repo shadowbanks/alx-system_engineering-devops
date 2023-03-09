@@ -12,3 +12,4 @@ Description of each Script
 6-firstdirectory -- Craete a dir in /tmp
 7-movethatfile -- Move /tmp/betty file to /tmp/my_first_directory
 8-firstdelete -- Delete betty file from /tmp/my_first_directory
+9-firstdirdeletion -- Delete dir from /tmp
