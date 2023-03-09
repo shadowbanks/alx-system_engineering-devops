@@ -5,3 +5,7 @@ Description of each Script
 2-bring_me_home -- Change to /home dir
 3-listfiles -- Display list of contents in current dir in long format
 4-listmorefiles -- Display all contect of a dir including hidden files in long format
+5-listfilesdigitonly -- Display content of current directory in the below format
+	* Long format
+*with user and group IDs
+* And hidden files
