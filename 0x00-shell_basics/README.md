@@ -10,3 +10,4 @@ Description of each Script
 *with user and group IDs
 * And hidden files
 6-firstdirectory -- Craete a dir in /tmp
+7-movethatfile -- Move /tmp/betty file to /tmp/my_first_directory
