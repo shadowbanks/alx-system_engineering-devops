@@ -9,3 +9,4 @@ Description of each Script
 	* Long format
 *with user and group IDs
 * And hidden files
+6-firstdirectory -- Craete a dir in /tmp
