@@ -8,3 +8,6 @@ Shell Redirections
 2-hellofile -- Script that displays content of /etc/passwd
 
 
+3-twofiles -- Script that display content of /etc/passwd and /etc/hosts
+
+
