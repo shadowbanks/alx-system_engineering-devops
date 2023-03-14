@@ -23,3 +23,6 @@ Shell Redirections
 8-cwd_state -- Redirect from stdout to a file
 
 
+9-duplicate_last_line -- Duplicate the last line of a file
+
+
