@@ -14,3 +14,6 @@ Shell Redirections
 4-lastlines -- Script that displays the last 10 lines of a specific file, in this case /etc/passwd
 
 
+5-firstlines -- Display the first lines of a file, in this case /etc/passwd
+
+
