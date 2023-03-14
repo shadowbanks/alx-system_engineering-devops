@@ -17,3 +17,9 @@ Shell Redirections
 5-firstlines -- Display the first lines of a file, in this case /etc/passwd
 
 
+7-file -- Print a string with a lot of escape characters
+
+
+8-cwd_state -- Redirect from stdout to a file
+
+
