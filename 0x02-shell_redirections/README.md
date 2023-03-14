@@ -11,3 +11,6 @@ Shell Redirections
 3-twofiles -- Script that display content of /etc/passwd and /etc/hosts
 
 
+4-lastlines -- Script that displays the last 10 lines of a specific file, in this case /etc/passwd
+
+
