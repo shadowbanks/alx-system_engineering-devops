@@ -1,0 +1,2 @@
+#!/bin/bash
+awk '/usr/ {print $0}' /etc/passwd | awk 'BEGIN{FS=":"; OFS=":";} {print $1,$6}' | sort
