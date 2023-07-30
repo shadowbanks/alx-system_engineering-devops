@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script displays all of the currently running process
+
+ps auxf | grep "bash"
