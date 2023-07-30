@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Read and cut a file
+
+file="/etc/passwd"
+while IFS=: read -r username _ uid _ _  home_directory _;
+do
+	echo "$username:$uid:$home_directory"
+done <"$file"
