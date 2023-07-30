@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Print the time fof 12hrs and 59mins
+
+i=0
+while [ "$i" -lt 13 ]
+do
+	j=1
+	echo "Hour: $i"
+	while [ "$j" -lt 60 ]
+	do
+		echo "$j"
+		((j++))
+	done
+	((i++))
+done
