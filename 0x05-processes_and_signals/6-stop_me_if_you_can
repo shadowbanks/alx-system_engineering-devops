@@ -4,6 +4,5 @@
 script="4-to_infinity_and_beyond"
 if pgrep -f "$script" > /dev/null
 then
-	temp_pid=$(pgrep -f "$script")
-	kill "$temp_pid"
+	pkill -15 -f "$script"
 fi
