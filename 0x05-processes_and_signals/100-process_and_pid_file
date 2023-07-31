@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Script that saves it's PID in a file and prevent termination
+
+PID="$$"
+file=/var/run/myscript.pid
+cleanup()
+{
+	echo "I hate the kill command"
+	rm -f "$file"
+	exit 1
+}
+
+trap "echo Y U no love me?!" SIGINT
+echo -n "$PID" > "$file"
+trap "cleanup" SIGTERM SIGQUIT
+
+while (true)
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
