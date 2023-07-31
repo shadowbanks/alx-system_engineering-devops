@@ -4,5 +4,6 @@
 script="7-highlander"
 if pgrep -f "$script" > /dev/null
 then
-	pkill -9 -f "$script"
+	temp_pid=$(pgrep -f "$script")
+	kill -9 "$temp_pid"
 fi
