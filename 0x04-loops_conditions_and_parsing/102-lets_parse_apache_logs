@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Filter a log file to obtain it's IP and status code
+
+awk '{printf "%s %s\n", $1, $9}'  apache-access.log
