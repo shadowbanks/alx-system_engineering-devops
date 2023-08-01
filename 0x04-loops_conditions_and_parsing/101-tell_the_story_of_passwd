@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Use IFS on /etc/paawd to get field values
+
+while IFS=: read -r -a f
+do
+	echo "The user ${f[0]} is part of the ${f[3]} gang, lives in ${f[5]} and rides ${f[6]}. ${f[2]}'s place is protected by the passcode ${f[1]}, more info about the user here: ${f[4]}"
+done < /etc/passwd
