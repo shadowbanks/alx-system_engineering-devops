@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 echo "#!/usr/bin/env ruby" > $@
+echo "puts ARGV[0].scan(//).join" >> $@
 chmod u+x $@
 vim $@
