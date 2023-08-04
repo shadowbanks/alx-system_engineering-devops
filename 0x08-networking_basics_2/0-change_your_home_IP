@@ -7,7 +7,7 @@ if grep -q "localhost" "$tmp"
 then
 	sed -i "s/^.*localhost$/127.0.0.2\tlocalhost/" "$tmp"
 else
-	echo -e "127.0.0.1\tlocalhost" >> "$tmp"
+	echo -e "127.0.0.2\tlocalhost" >> "$tmp"
 fi
 echo -e "8.8.8.8\tfacebook.com" >> "$tmp"
 mv -f "$tmp" "$hosts"
