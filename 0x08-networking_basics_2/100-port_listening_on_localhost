@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Listen in on a port
+if [ -e log ]
+then
+	cat log
+fi
+nc -l -p 98 > log
