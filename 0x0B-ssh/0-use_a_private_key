@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Connect to a remote server using a private key
+p_key="~/.ssh/school"
+user="ubuntu"
+ip="100.25.147.62"
+
+ssh -i "$p_key" "$user@$ip"
