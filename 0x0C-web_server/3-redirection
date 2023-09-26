@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#install nginx
+apt update -y
+apt install nginx -y
+
+# set the localhost default page
+echo  "Hello World!" > /var/www/html/index.html
+old_str="try_files \$uri \$uri/ =404;"
+new_str="return 301 https://www.youtube.com/watch?v=_S7WEVLbQ-Y;"
+sed -i "s#$old_str#$new_str#" /etc/nginx/sites-available/default
+
+apt install ufw -y
+ufw allow 'NGINX HTTP'
+service nginx start
