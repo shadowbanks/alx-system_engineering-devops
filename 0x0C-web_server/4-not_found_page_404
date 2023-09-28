@@ -10,11 +10,10 @@ sed -i '/^}$/i \ '"$new_str" /etc/nginx/sites-available/default
 
 # create a default 404 error page
 echo "Sorry, Not Sorry (Ceci n'est pas une page) Ahahah" > /var/www/html/404.html
-sed -i 's|=404;|/404.html|' /etc/nginx/sites-available/default
 
-err_str=$"\tlocation = /404.html {\n\t\tinternal;\n\t}"
+err_str=$"\n\terror_page 404 /404.html;\n\n\tlocation = /404.html {\n\t\tinternal;\n\t}"
 sed -i '/^}$/i \ '"$err_str" /etc/nginx/sites-available/default
 
 apt install ufw -y
 ufw allow 'NGINX HTTP'
-service nginx start
+service nginx restart
