@@ -1,11 +1,10 @@
 # Install and Configure nginx: implement a direction and also create a customer 404 page
 exec { 'update':
-  command => '/usr/bin/apt-get update -y',
+  command => '/usr/bin/apt-get update',
 }
 
 package { 'nginx':
   ensure  => 'installed',
-  require => Exec['update'],
 }
 
 file { 'homepage':
@@ -17,21 +16,34 @@ file { 'homepage':
 file { '404-page':
   ensure  => 'file',
   path    => '/var/www/html/404.html',
-  content => 'Sorry, Not Sorry (Ceci n\'est pas une page) Ahahah',
+  content => 'Ceci n\'est pas une page',
 }
-$new_str="\tlocation = /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=_S7WEVLbQ-Y;\n\t}"
+$new_str="	location = /redirect_me {
+			return 301 https://www.youtube.com/watch?v=_S7WEVLbQ-Y;
+		}"
 
-exec {'redirect':
-  command => 'sed -i \'/^}$/i \ \'"$new_str" /etc/nginx/sites-available/default'
+file_line {'redirect':
+  ensure => present,
+  line   => $new_str,
+  match  => '^}$',
+  before => '^}$',
+  path   => '/etc/nginx/sites-available/default',
 }
 
-$err_str="\tlocation = /404.html {\n\t\tinternal;\n\t}"
+$err_str="	location = /404.html {
+			internal;
+		}"
 
 exec {'handle_404':
-  command => 'sed -i \'/^}$/i \ \'"$err_str" /etc/nginx/sites-available/default'
+  ensure => present,
+  line   => $err_str,
+  match  => '^}$',
+  before => '^}$',
+  path   => '/etc/nginx/sites-available/default',
 }
 
 service {'nginx':
   ensure  => 'running',
+  enable  => true,
   require => Package['nginx'],
 }
