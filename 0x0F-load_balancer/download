@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+file=$@
+scp ubuntu@54.174.169.156:$file

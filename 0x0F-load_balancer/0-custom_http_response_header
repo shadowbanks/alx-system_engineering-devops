@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#install nginx
+apt update -y
+apt install nginx -y
+
+# set the localhost default page
+echo  "Hello World!" > /var/www/html/index.html
+new_str=$"\tlocation = /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=_S7WEVLbQ-Y;\n\t}"
+sed -i '/^}$/i \ '"$new_str" /etc/nginx/sites-available/default
+
+str="location / {"
+custom_head="location / {\n\t\tadd_header X-Served-By \$hostname;"
+sed -i -z "s|$str|$custom_head|" /etc/nginx/sites-available/default
+
+# create a default 404 error page
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+
+err_str=$"\n\terror_page 404 /404.html;\n\n\tlocation = /404.html {\n\t\tinternal;\n\t}"
+sed -i '/^}$/i \ '"$err_str" /etc/nginx/sites-available/default
+
+apt install ufw -y
+ufw allow 'NGINX HTTP'
+service nginx restart
