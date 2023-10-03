@@ -14,5 +14,6 @@ backend back_end
 	balance roundrobin"
 
 echo "$config" >> /etc/haproxy/haproxy.cfg
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
 
 sudo service haproxy restart
