@@ -1,6 +1,6 @@
 # Install and Configure nginx: implement a direction and also create a customer 404 page
 exec { 'update':
-  command => '/usr/bin/apt-get update',
+  command => '/usr/bin/apt-get update -y',
 }
 
 package { 'nginx':
@@ -30,7 +30,9 @@ file_line {'redirect':
   path   => '/etc/nginx/sites-available/default',
 }
 
-$err_str="	location = /404.html {
+$err_str="	error_page 404 /404.html;
+
+		location = /404.html {
 			internal;
 		}"
 
