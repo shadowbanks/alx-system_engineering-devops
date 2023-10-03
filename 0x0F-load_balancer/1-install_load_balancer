@@ -9,11 +9,10 @@ frontend front_end
 	default_backend back_end
 
 backend back_end
+	balance roundrobin
 	server 149870-web-01 100.25.147.62 check
-	server 149870-web-02 54.174.169.156 check
-	balance roundrobin"
+	server 149870-web-02 54.174.169.156 check"
 
 echo "$config" >> /etc/haproxy/haproxy.cfg
-echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
 
 sudo service haproxy restart
