@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-#install nginx
-apt update -y
-apt install nginx -y
-
-ufw allow 'NGINX HTTP'
-service nginx start
+# Make nginx run on port 80 and restart service
+sudo sed -i 's/8080/80/' /etc/nginx/sites-enabled/default
+sudo service nginx restart
