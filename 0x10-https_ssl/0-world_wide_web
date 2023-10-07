@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# A Bash script to provide details of a domain name
+
+get_details() {
+	url="$1.$2"
+	details=$(dig "$url" | grep -A1 'ANSWER SECTION:' | tail -n 1)
+	rec_t=$(echo "$details" | awk '{print $4}')
+	dest=$(echo "$details" | awk '{print $5}')
+
+	echo "The subdomain $1 is a $rec_t record and points to $dest"
+}
+if [ "$#" -eq 1 ]; then
+	sub_domains=("www" "lb-01" "web-01" "web-02")
+	for sub in "${sub_domains[@]}"; do
+		get_details "$sub" "$1"
+	done
+else
+	get_details "$2" "$1"
+fi
