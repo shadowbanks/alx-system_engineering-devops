@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Backup all mysql database
+
+bckup_date=$(date '+%d-%m-%Y')
+passwd=$1
+
+mysqldump -u root -p"$passwd" --all-databases > backup.sql
+tar -czf "$bckup_date".tar.gz backup.sql
