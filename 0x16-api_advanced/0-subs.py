@@ -13,7 +13,7 @@ def number_of_subscribers(subreddit):
     url = "https://www.reddit.com/r/" + subreddit + "/about.json"
     headers = {"User-Agent": "TSubs/1.0 (by Wills)"}
     res = requests.get(url, headers=headers)
-    if (res.status_code == 200):
+    if res.status_code == 200:
         data = res.json()
         subs = data["data"]["subscribers"]
         return subs
