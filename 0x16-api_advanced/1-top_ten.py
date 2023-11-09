@@ -5,7 +5,7 @@ import requests
 
 def top_ten(subreddit):
     """Get the top 10 posts"""
-    url = "https://www.reddit.com/r/" + subreddit + "/hot.json"
+    url = "https://www.reddit.com/r/" + subreddit + "/top.json"
     headers = {"User-Agent": "TopHotPost/1.0 {by Wills}"}
     res = requests.get(url, headers=headers)
     if (res.status_code == 200):
