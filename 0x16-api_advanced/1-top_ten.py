@@ -9,10 +9,9 @@ def top_ten(subreddit):
     headers = {"User-Agent": "TopHotPost/1.0 {by Wills}"}
     res = requests.get(url, headers=headers)
     if (res.status_code == 200):
-        data = res.json()
-        data = data["data"]["children"]
-        top10 = data[:10]
-        for post in top10:
+        data = res.json()["data"]
+        data = data["children"][:10]
+        for post in data:
             print(post["data"]["title"])
         return
     print("None")

@@ -5,14 +5,14 @@ Get all hot titles of a subreddit
 import requests
 
 
-def recurse(subreddit, after=None, hot_list=[]):
+def recurse(subred, after=None, hot_list=[]):
     """
     Recursivily get all hot title
     """
     if after:
-        url = "https://www.reddit.com/r/" + subreddit + "/hot.json?after=" + after
+        url = "https://www.reddit.com/r/" + subred + "/hot.json?after=" + after
     else:
-        url = "https://www.reddit.com/r/" + subreddit + "/hot.json"
+        url = "https://www.reddit.com/r/" + subred + "/hot.json"
     headers = {"User-Agent": "RecHot/1.0"}
     res = requests.get(url, headers=headers)
 
@@ -23,7 +23,7 @@ def recurse(subreddit, after=None, hot_list=[]):
         for title in data["children"]:
             hot_list.append(title["data"]["title"])
         if after:
-            recurse(subreddit, after, hot_list)
+            recurse(subred, after, hot_list)
         return hot_list
     else:
         return None
