@@ -9,12 +9,9 @@ def recurse(subred, after=None, hot_list=[]):
     """
     Recursivily get all hot title
     """
-    if after:
-        url = "https://www.reddit.com/r/" + subred + "/hot.json?after=" + after
-    else:
-        url = "https://www.reddit.com/r/" + subred + "/hot.json"
-    headers = {"User-Agent": "RecHot/1.0"}
-    res = requests.get(url, headers=headers)
+    url = "https://www.reddit.com/r/" + subred + "/hot.json"
+    headers = {"User-Agent": "Hot/1.0"}
+    res = requests.get(url, headers=headers, params={"after": after})
 
     if res.status_code == 200:
         resq = res.json()
