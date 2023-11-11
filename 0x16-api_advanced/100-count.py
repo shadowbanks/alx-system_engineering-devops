@@ -19,10 +19,11 @@ def count_words(subred, word_list, count=None, after=""):
         resq = res.json()["data"]
         after = resq["after"]
         for title in resq["children"]:
-            titles = title["data"]["title"].split()
-            for word in titles:
+            # titles = title["data"]["title"].split()
+            titles = title["data"]["title"].lower().split()
+            for word in word_list:
                 word = word.lower()
-                if word in word_list:
+                if word in titles:
                     if word in count:
                         count[word] += 1
                     else:
